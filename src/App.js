@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import Card from "./components/Cards";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
@@ -6,7 +6,7 @@ import {data} from "./data";
 
 function App() {
   const [itemsData, setItemsData] = useState(data);
-  const [selectedRadio, setSelectedRadio] = useState(null);
+  const [, setSelectedRadio] = useState(null);
   // filter by category
   const filterCategory = (company) => {
     if (company === "all") {
@@ -31,18 +31,14 @@ function App() {
   // ============================================
   const handleCategoryChange = (event) => {
     const selectedValue = event.target.value;
-
     let filteredProductsByCategories = data;
-
     if (selectedValue !== "all") {
       console.log(selectedValue);
       setSelectedRadio(selectedValue);
-
       // Filtering logic here, e.g., filter by category
       filteredProductsByCategories = filteredProductsByCategories.filter(
         (prod) => prod.category === selectedValue
       );
-
       // Update the itemsData state with the filtered data
       setItemsData(filteredProductsByCategories);
     } else {
@@ -66,6 +62,43 @@ function App() {
     //   console.log("filteredItems:", filteredItems);
     //   setItemsData(filteredItems);
     // }
+  };
+
+  const handlePriceChange = (event) => {
+    const selectedValue = event.target.value;
+    console.log("selectedValue:", selectedValue);
+    if (selectedValue === "allPrices") {
+      console.log("Resetting filter");
+      setItemsData(data);
+    } else {
+      setSelectedRadio(selectedValue);
+      const [minPrice, maxPrice] = selectedValue.split("-");
+      console.log("minPrice:", minPrice);
+      console.log("maxPrice:", maxPrice);
+      const filteredItems = data.filter((item) => {
+        const itemPrice = parseFloat(item.newPrice);
+        return itemPrice >= +minPrice && itemPrice <= +maxPrice;
+      });
+      console.log("filteredItems:", filteredItems);
+      setItemsData(filteredItems);
+    }
+  };
+
+  const handleColorChange = (event) => {
+    const selectedValue = event.target.value;
+    let filteredProductsByColor = data;
+    if (selectedValue !== "all") {
+      console.log(selectedValue);
+      setSelectedRadio(selectedValue);
+      // Filtering logic here, e.g., filter by category
+      filteredProductsByColor = filteredProductsByColor.filter(
+        (prod) => prod.color === selectedValue
+      );
+      // Update the itemsData state with the filtered data
+      setItemsData(filteredProductsByColor);
+    } else {
+      setItemsData(data);
+    }
   };
 
   // ===========================================
@@ -152,7 +185,11 @@ function App() {
   return (
     <div>
       <div className="flex ">
-        <SideBar handleCategoryChange={handleCategoryChange} />
+        <SideBar
+          handleCategoryChange={handleCategoryChange}
+          handlePriceChange={handlePriceChange}
+          handleColorChange={handleColorChange}
+        />
         <div>
           <NavBar filterSearch={filterSearch} />
           <Card itemsData={itemsData} filterCategory={filterCategory} />

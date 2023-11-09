@@ -1,10 +1,9 @@
 import React from 'react'
-import {data} from '../data';
 
-function SideBar({handleCategoryChange,handleColorChange}) {
+function SideBar({handleCategoryChange,handlePriceChange,handleColorChange}) {
     const radioBg = "accent-red-500 "
     // const allCategories = ["all", ...new Set(data.map((d) => d.category))];
-    const allColors = ["all", ...new Set(data.map((d) => d.color))];
+    // const allColors = ["all", ...new Set(data.map((d) => d.color))];
     
   return (
     <div className='border-r-2  border-[#f3f3f3]'>
@@ -49,23 +48,23 @@ function SideBar({handleCategoryChange,handleColorChange}) {
             <div className='mt-6'>
                 <h2 className='text-2xl font-bold'>Price</h2>
                 <div className='flex'>
-                    <input id='allPrices' type="radio" name='radio' value={'allPrices'} onChange={handleCategoryChange} className={radioBg} />
+                    <input id='allPrices' type="radio" name='radio' value={'allPrices'} onChange={handlePriceChange} className={radioBg} />
                     <label htmlFor='allPrices' className='pl-3 text-md'>All</label>
                 </div>
                 <div className='flex'>
-                    <input id='0$' type="radio" name='radio' value={'0-50'} onChange={handleCategoryChange} className={radioBg} />
+                    <input id='0$' type="radio" name='radio' value={'0-50'} onChange={handlePriceChange} className={radioBg} />
                     <label htmlFor='0$' className='pl-3 text-md'>$0 - 50$</label>
                 </div>
                 <div className='flex'>
-                    <input id='50$' type="radio" name='radio' value={"50-100"} onChange={handleCategoryChange} className={radioBg} />
+                    <input id='50$' type="radio" name='radio' value={"50-100"} onChange={handlePriceChange} className={radioBg} />
                     <label htmlFor='50$' className='pl-3 text-md'>$50 - 100$</label>
                 </div>
                 <div className='flex'>
-                    <input id='100$' type="radio" name='radio' value={"100-150"} onChange={handleCategoryChange} className={radioBg} />
+                    <input id='100$' type="radio" name='radio' value={"100-150"} onChange={handlePriceChange} className={radioBg} />
                     <label htmlFor='100$' className='pl-3 text-md'>$100 - 150$</label>
                 </div>
                 <div className='flex'>
-                    <input id='150$' type="radio" name='radio' value={'150-200'} onChange={handleCategoryChange} className={radioBg} />
+                    <input id='150$' type="radio" name='radio' value={'150-200'} onChange={handlePriceChange} className={radioBg} />
                     <label htmlFor='150$' className='pl-3 text-md'>over 150$</label>
                 </div>
             </div>
@@ -76,28 +75,28 @@ function SideBar({handleCategoryChange,handleColorChange}) {
 
 
                 <div  className='flex '>
-                    <input id='all-colors' type="radio" name='colors' onChange={handleColorChange} className={ `accent-red-500  `} />
+                    <input id='all-colors' type="radio" name='radio' value={'all'} onChange={handleColorChange} className={ `accent-red-500  `} />
                     <label htmlFor='all-colors' className='pl-3 text-md'>All</label>
                 </div>
                 <div  className='flex '>
-                    <input id='black' type="radio" name='colors' onChange={handleColorChange} className={ `accent-red-500  `} />
+                    <input id='black' type="radio" name='radio' value={'black'} onChange={handleColorChange} className={ `accent-red-500  `} />
                     <label htmlFor='black' className='pl-3 text-md'>Black</label>
                 </div>
                 <div  className='flex '>
-                    <input id='blue' type="radio" name='colors' onChange={handleColorChange} className={ `accent-red-500  `} />
-                    <label htmlFor='blue' className='pl-3 text-md'>Blue</label>
+                    <input id='blue' type="radio" name='radio' value={'blue'} onChange={handleColorChange} className={ `accent-red-500  `} />
+                    <label htmlFor='blue' className='pl-3 text-md' >Blue</label>
                 </div>
                 <div  className='flex '>
-                    <input id='red' type="radio" name='colors' onChange={handleColorChange} className={ `accent-red-500  `} />
+                    <input id='red' type="radio" name='radio' value={'red'} onChange={handleColorChange} className={ `accent-red-500  `} />
                     <label htmlFor='red' className='pl-3 text-md'>Red</label>
                 </div>
                 <div  className='flex '>
-                    <input id='green' type="radio" name='colors' onChange={handleColorChange} className={ `accent-red-500  `} />
+                    <input id='green' type="radio" name='radio' value={'green'} onChange={handleColorChange} className={ `accent-red-500  `} />
                     <label htmlFor='green' className='pl-3 text-md'>Green</label>
                 </div>
                 <div  className='flex '>
-                    <input id='white' type="radio" name='colors' onChange={handleColorChange} className={ `accent-red-500  `} />
-                    <label htmlFor='white' className='pl-3 text-md'>White</label>
+                    <input id='white' type="radio" name='radio' value={'white'} onChange={handleColorChange} className={ `accent-red-500  `} />
+                    <label htmlFor='white' className='pl-3 text-md' >White</label>
                 </div>
                 {/* {allColors.map((color,i) => (
                     
